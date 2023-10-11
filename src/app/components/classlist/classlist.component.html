@@ -1,0 +1,26 @@
+<div class="bg-classlist container">
+    <div class="container">
+        <div class="row pt-4 w-75 m-auto">
+            <button (click)="newclass?newclass=false:newclass=true" type="button" class="btn btn-light"><i class="bi bi-plus"></i>New Class</button>            
+        </div>
+        <div *ngIf="newclass" class="row mt-3">
+            <div class="col-8">
+                <input type="text" #className class="form-control ps-0 pe-0 ms-0 me-0" name="" id="">
+            </div>
+            <div class="col-2">
+                <button (click)="createClass(className.value)" type="button" class="btn btn-success">Add</button>
+            </div>
+        </div>
+        <div class="row classlist ">
+            <h3 class="mt-4">classes</h3>
+            <hr class="m-0 p-0">
+            <ul class="mt-2">
+                <ng-container *ngFor="let class of classes | keyvalue">
+                    <li [draggable]="true" (dragstart)="handleDrag($event,class.key)" (click)="selectClass(class.key)">
+                        {{class.key}}
+                    </li>
+                </ng-container>                
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Applied classes</h2>
+  <div class="row">
+    <div class="col-6">
+      <div class="mt-3 select-classes">
+        <div class="list-group">
+          <ng-container *ngFor="let cl of classes | keyvalue">
+            <label class="list-group-item">
+              <input class="form-check-input me-1" (change)="handleSelectedClass(cl.value)" checked="true" type="checkbox" value="" />
+              {{cl.value}}
+            </label>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

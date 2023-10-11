@@ -1,0 +1,14 @@
+.bg-header{
+    background-color: rgb(38, 62, 63);
+    padding-left: 3%;
+}
+.nav-code-active{
+    background-color: rgb(9, 124, 85);
+    border-radius: 5px;
+    transition-duration: 100ms;
+}
+
+.projectName{
+    font-size: x-large;
+    color: white;
+}

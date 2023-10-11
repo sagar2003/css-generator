@@ -1,0 +1,22 @@
+.list-single-project{
+    background-color: rgb(109, 171, 133);
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    padding:5px 0px 5px 0px;
+    transition-duration: 200ms;
+}
+
+.list-single-project:hover{
+    background-color: rgb(64, 127, 87);
+}
+
+.list-single-project:disabled{
+    background-color: rgb(49, 79, 60);;
+}
+
+.list-single-project>h3{
+    padding: 2px 10px 2px 10px;
+}
+
+

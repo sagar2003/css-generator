@@ -1,0 +1,20 @@
+.card-top{
+    background-color: rgb(65, 102, 94);
+    border-radius: 5px;
+}
+
+.card-top>h6{
+    color: white;
+    margin: auto;
+    padding: 5px 15px 8px 15px;
+}
+
+.css-editor{
+    background-color: black;
+    width: 100%;
+    color: white;
+    height: 20vh;
+    max-lines: 30;
+    border-radius: 5px;
+}
+

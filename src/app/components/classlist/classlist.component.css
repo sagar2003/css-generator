@@ -1,0 +1,25 @@
+
+
+.bg-classlist{
+    max-height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px);
+    background-color: rgb(38, 62, 63);
+    overflow-y: scroll;
+}
+
+.classlist>ul>li{
+    background-color: rgb(72, 105, 93);
+    margin-top: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 5px 15px 5px 15px;
+    color: rgb(231, 231, 231);
+}
+
+.classlist>ul{
+    list-style-type: none;
+}
+
+p,h1,h2,h3,h4,h5,h6,label{
+    color:rgb(204, 203, 203)
+}

@@ -1,0 +1,158 @@
+<ng-template appPlaceholder></ng-template>
+<div class="container">
+  <form (ngSubmit)="handleSubmit()" [formGroup]="signUpForm" class="row">
+    <div class="col-lg-12 ms-auto px-5 py-5 me-auto bg-card">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 [ngStyle]="{ 'text-align': 'center' }">Sign Up</h2>
+        </div>
+      </div>
+
+
+      <div class="row mt-1">
+        <div class="col-lg-12">
+          <div class="alert alert-success" role="alert">
+            <strong>Already have an acount! </strong
+            ><a (click)="handleLogin()" class="alert-link">Click Here</a>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-lg-6">
+          <div class="mb-3">
+            <label for="" class="form-label">Name</label>
+            <input
+              #name
+              name="name"
+              formControlName="name"
+              type="text"
+              id=""
+              class="form-control"
+              placeholder=""
+              aria-describedby="helpId"
+            />
+            <small
+              *ngIf="signUpForm.controls.name.errors?.['required'] && signUpForm.controls.name.touched"
+              >This Field is required</small
+            >
+          </div>
+        </div>
+        <div class="col-lg-6" formGroupName="userContact">
+          <div class="mb-3">
+            <label for="" class="form-label">Contact</label>
+            <input
+              name="contact"
+              formControlName="contact"
+              type="text"
+              id=""
+              class="form-control"
+              placeholder=""
+              aria-describedby="helpId"
+            />
+            <small
+              *ngIf="signUpForm.controls.userContact.controls.contact.touched && signUpForm.controls.userContact.controls.contact.errors?.['required']"
+              >This Field is required</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row mt-1" formGroupName="userContact">
+        <div class="col-lg-12">
+          <div class="mb-3">
+            <label for="" class="form-label">Email</label>
+            <input
+              name="email"
+              email
+              formControlName="email"
+              type="text"
+              id=""
+              #email
+              class="form-control"
+              placeholder=""
+              aria-describedby="helpId"
+            />
+            <small
+              *ngIf="signUpForm.controls.userContact.controls.email.touched && signUpForm.controls.userContact.controls.email.errors?.['required']"
+              >This Field is required</small
+            >
+            <small
+              *ngIf="signUpForm.controls.userContact.controls.email.errors?.['email']"
+              >Email is Invalid</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row mt-1" formGroupName="passSecurity">
+        <div class="col-lg-5">
+          <div class="mb-3">
+            <label for="" class="form-label">Password</label>
+            <input
+            name="pass"
+            type="password"
+            formControlName="pass"
+            id=""
+            #pass
+            class="form-control"
+            placeholder=""
+            aria-describedby="helpId"
+          />
+            
+            <small
+              *ngIf="signUpForm.controls.passSecurity.controls.pass.errors?.['required'] && signUpForm.controls.passSecurity.controls.pass.touched"
+              >This Field is required</small
+            >
+            <small
+              *ngIf="signUpForm.controls.passSecurity.controls.pass.errors?.['LengthError'] && signUpForm.controls.passSecurity.controls.pass.touched"
+              >Length must be >6 characters</small
+            >
+            <small
+              *ngIf="signUpForm.controls.passSecurity.controls.pass.errors?.['SpaceError'] && signUpForm.controls.passSecurity.controls.pass.touched"
+              >Password can't contain space</small
+            >
+            <small
+              *ngIf="signUpForm.controls.passSecurity.controls.pass.errors?.['SpecialCharError'] && signUpForm.controls.passSecurity.controls.pass.touched"
+              >Password must contain atleast one special character</small
+            >
+          </div>
+        </div>
+        <div class="col-2 m-auto i-svg"  (click)="pass.type=='password'?(pass.type='text' && repass.type='text'):(pass.type='password'  && repass.type='password')">
+          <i [ngClass]="pass.type=='password'?'bi-eye-fill':'bi-eye-slash'" class="bi bi-eye-fill"></i>
+        </div>
+        <div class="col-lg-5">
+          <div class="mb-3">
+            <label for="" class="form-label">Confirm Passwod</label>
+            <input
+              name="repass"
+              #repass
+              type="password"
+              formControlName="repass"
+              class="form-control"
+              placeholder=""
+              aria-describedby="helpId"
+            />
+            <small
+              *ngIf="signUpForm.controls.passSecurity.controls.repass.errors?.['required'] && signUpForm.controls.passSecurity.controls.repass.touched"
+              >This Field is required</small
+            >
+            <small
+              *ngIf="!signUpForm.controls.passSecurity.controls.repass.errors?.['required'] && signUpForm.controls.passSecurity.errors?.['PasswordNoMatch'] && signUpForm.controls.passSecurity.controls.repass.touched"
+              >Password doesn't match</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <button
+            type="submit"
+            [ngClass]="signUpForm.invalid ? 'disabled' : ''"
+            [ngStyle]="{ width: '100%', 'mi-width': 'fit-content' }"
+            class="btn btn-success"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

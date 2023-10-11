@@ -1,0 +1,13 @@
+p,h1,h2,h3,h4,h5,h6,label{
+    color:rgb(204, 203, 203)
+}
+
+
+.select-classes{
+    position: absolute;
+    width: 20vw;
+    top: 20px;
+    bottom: 0;
+    right: 0;
+    overflow-y: scroll;
+}

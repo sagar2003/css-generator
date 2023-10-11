@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <h2>{{currentClass?currentClass:'No class selected'}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <div class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="triggerId"
+          data-bs-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+        {{currentAttribute.attr!=''?currentAttribute.attr:'Select Attribute'}}
+          
+        </button>
+        <div
+          class="dropdown-menu"
+          aria-labelledby="triggerId"
+          [ngStyle]="{ 'overflow-y': 'scroll', 'max-height': '250px' }"
+        >
+        <ng-container *ngFor="let attr of allCssAttributes">
+          <label (click)="updateCurrentAttribute(attr,'')" class="dropdown-item">{{attr}}</label>
+        </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <input #attrval class="form-control" (input)="updateCurrentAttribute('',attrval.value)" type="text" name="" id="">
+    </div>
+    <div class="col-2">
+      <button type="button" (click)="addAttribute()" class="btn btn-success">Add</button>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <ng-container >
+        <div class="table-responsive">
+            <table class="table table-gray">
+                <thead>
+                    <tr>
+                        <th scope="col">Attribute</th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let attr of attributes|keyvalue">
+                        <tr class="">
+                            <td scope="row">{{attr.key}}</td>
+                            <td>{{attr.value}}</td>
+                            <td><i (click)="removeAttr(attr.key)" class="bi bi-trash"></i> remove</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+        
+      </ng-container>
+  </div>
+ 
+</div>

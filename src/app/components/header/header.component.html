@@ -1,0 +1,36 @@
+<nav class="navbar bg-header navbar-expand navbar-dark bg-faded">
+    <a class="navbar-brand" href="#">Css Generator</a>
+    <div class="container">
+        <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+           
+            <li class="nav-item me-5">
+                <label class="nav-link projectName">{{projectName}}</label>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="nav-code-active" routerLink="preview">Preview</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="nav-code-active" routerLink="code">Code</a>
+            </li>
+            <li>
+                <app-spinner></app-spinner></li>
+        </ul>
+        <div class="d-flex my-2 my-lg-0">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="" aria-current="page">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="setFullScreen()">Full Screen</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" (click)="saveProject()">Save</a>
+            </li>
+            <li class="nav-item ">
+                <i class="bi bi-person-circle nav-link" [ngStyle]="{'font-size':'x-large','cursor':'pointer'}"></i>
+            </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

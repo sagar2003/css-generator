@@ -1,0 +1,98 @@
+
+<div class="container">
+    <form  class="row" (ngSubmit)="handleSubmit()" [formGroup]="loginform" #f="ngForm">
+      <div class="col-lg-12 ms-auto px-5 py-5 me-auto bg-card">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2 [ngStyle]="{ 'text-align': 'center' }">Login</h2>
+          </div>
+        </div>
+        
+        <div class="row mt-4">
+          <div class="col-lg-12">
+            <div class="alert alert-success" role="alert"><strong>New User! </strong><a (click)="handleSignUp()" class="alert-link">Click Here</a></div> 
+          </div>
+        </div>
+        
+        <div class="row mt-1">
+          <div class="col-lg-12">
+            <div class="mb-3">
+              <label for="" class="form-label">Email</label>
+              <input
+                name="email"
+                type="text"
+                formControlName="email"
+                id=""
+                class="form-control"
+                placeholder=""
+                aria-describedby="helpId"
+              />
+              <small
+                *ngIf="f.form.controls['email'] &&
+                  f.form.controls['email'].errors &&
+                  f.form.controls['email'].errors['required'] &&
+                  f.form.controls['email'].touched
+                "
+                >This Field is required</small
+              >
+              <small
+                *ngIf="f.form.controls['email'] &&
+                  f.form.controls['email'].errors &&
+                  f.form.controls['email'].errors['email'] &&
+                  f.form.controls['email'].touched
+                "
+                >Email is Invalid</small
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row mt-1">
+          <div class="col-lg-12">
+            <div class="mb-3">
+              <label for="" class="form-label">Password</label>
+              <div class="row">
+                <div class="col-lg-11">
+
+                  <input
+                  #pass
+                  name="pass"
+                  formControlName="pass"
+                  id=""
+                  type="password"
+                  class="form-control"
+                  placeholder=""
+                  aria-describedby="helpId"
+                />
+                </div>
+              <div class="col-lg-1 m-auto i-svg"  (click)="pass.type=='password'?(pass.type='text'):(pass.type='password')">
+                <i [ngClass]="pass.type=='password'?'bi-eye-fill':'bi-eye-slash'" class="bi bi-eye-fill"></i>
+              </div>
+              </div>
+              
+              <small
+                *ngIf="f.form.controls['pass'] &&
+                  f.form.controls['pass'].errors &&
+                  f.form.controls['pass'].touched
+                "
+                >This Field is required</small
+              >
+            </div>
+          </div>
+        </div>
+        
+        <div class="row mt-4">
+          <div class="col-md-4">
+            <button
+              type="submit"
+              [ngClass]="f.form.status == 'INVALID' ? 'disabled' : 'false'"
+              [ngStyle]="{ width: '100%', 'mi-width': 'fit-content' }"
+              class="btn btn-success"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  

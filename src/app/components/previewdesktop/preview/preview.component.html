@@ -1,0 +1,4 @@
+<div  class="preview-container">
+    <div *ngIf="fullScreen" (click)="fullScreen=false"><i class="bi bi-x-lg closeFloat"></i></div>
+    <iframe #desktopFrame sandbox="allow-scripts allow-same-origin" class="m-0 p-0" [ngClass]="fullScreen?'fullScreen':'smallScreen'" [src]="safeHtml"></iframe>
+</div>
