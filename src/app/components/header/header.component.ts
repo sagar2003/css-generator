@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { HtmlDataService } from 'src/app/services/html-data.service';
 import { ProjectHandlerService } from 'src/app/services/project-handler.service';
+import { AccountComponent } from '../account/account.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +12,7 @@ import { ProjectHandlerService } from 'src/app/services/project-handler.service'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private htmlService:HtmlDataService,private projectService:ProjectHandlerService){}
+  constructor(private htmlService:HtmlDataService,private projectService:ProjectHandlerService,private dialog:MatDialog,private authService:AuthService){}
 
   ngOnInit(): void {
     this.projectService.projectDataChange.subscribe(()=>{
@@ -22,6 +25,20 @@ export class HeaderComponent implements OnInit {
   setFullScreen(){
     this.htmlService.setFullScreen(true);
   }
+
+
+  openAccountDialog(){
+    const accountDialog = this.dialog.open(AccountComponent,{
+      height:'fit-content',
+      width:'450px'
+    })
+
+    const accountSubscription = accountDialog.afterClosed().subscribe((data)=>{
+      accountSubscription.unsubscribe();
+    })
+  }
+  
+
   
   async saveProject() {
     this.htmlService.spinner.emit(true);

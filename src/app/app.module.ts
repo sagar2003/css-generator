@@ -25,6 +25,7 @@ import { CodeComponent } from './components/previewdesktop/code/code.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { AccountComponent } from './components/account/account.component';
 
 
 
@@ -47,6 +48,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     HomeComponent,
     CodeComponent,
     SpinnerComponent,
+    AccountComponent,
   ],
   
   imports: [

@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
         this.openSignUp();
       }else if(next && next.next=='authenticated'){
         this.cuserUid=this.auth.cuser?.uid;
-        this.openProjectDialog(this.cuserUid!)
       }
     });
   }
@@ -50,7 +49,6 @@ export class HomeComponent implements OnInit {
         this.openLogin();
       }else if(data && data.next=='authenticated'){
         this.cuserUid=this.auth.cuser?.uid;
-        this.openProjectDialog(this.cuserUid!)
       }
     });
   }

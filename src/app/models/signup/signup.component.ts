@@ -44,6 +44,7 @@ export class SignupComponent implements OnInit{
     );
     this.auth.signUp(newUser).subscribe({
       next:(data)=>{
+        console.log(this.signupdialogref)
         this.signupdialogref.close({next:'authenticated'})
       },error:(err)=>{
         alert(err)

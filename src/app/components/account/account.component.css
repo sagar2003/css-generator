@@ -1,0 +1,7 @@
+.account-dialog{
+    padding: 15px;
+}
+
+.account-dialog > div > h1{
+    margin-bottom: auto;
+}

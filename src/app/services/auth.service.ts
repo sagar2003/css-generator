@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
 import {
   Database,
@@ -39,7 +40,9 @@ export class AuthService implements OnInit {
   database: Database;
   storage: FirebaseStorage
   cuser: User | undefined;
-
+  userData:{name:string,email:string}={name:'',email:''}
+  
+  userDataChanged:EventEmitter<{name:string,email:string}> = new EventEmitter();
   authChange: EventEmitter<User> = new EventEmitter();
 
   constructor() {
@@ -67,13 +70,10 @@ export class AuthService implements OnInit {
             email: user.email,
           })
             .then((res) => {
-              return new Observable((observ) => {
-                observ.next();
-              });
+              observ.next();
             })
             .catch((err) => {
               console.log(err);
-
               observ.error('failed to update user ' + err);
             });
         })
@@ -97,12 +97,19 @@ export class AuthService implements OnInit {
     });
   }
 
+  logout(){
+    return signOut(this.auth)
+  }
+
   getProjects() {
     return new Observable<projectsArray>((observ)=>{
-      const projectsRef = ref(this.database, this.cuser?.uid + '/projects')
-    
-      onValue(projectsRef, (snapshot) => {
-        const data = snapshot.val();
+      
+      const projectsRef = ref(this.database, this.cuser?.uid)
+
+      onValue(projectsRef, (snapshot) => {        
+        this.userData = {name:snapshot.child('name').val(),email:snapshot.child('email').val()}
+        this.userDataChanged.emit(this.userData)
+        const data = snapshot.child('projects').val();
         if(data){
           observ.next(data);
         }else{
